@@ -16,7 +16,7 @@ def sum_of_list(list_):
     for each in (list_):
         res[0] += each[0]
         res[1] += each[1]
-        return res
+    return res
 T = int(input())
 
 for tc in range(1, T + 1):
