@@ -1,3 +1,5 @@
+####이진탐색 문제###
+
 def solution(left,right):
     
 
