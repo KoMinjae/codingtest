@@ -1,4 +1,5 @@
-from sys import setrecursionlimit 
+###리스트를 이용한 트리 구현###
+from sys import setrecursionlimit
 setrecursionlimit(10000000)
 class Tree():
         def __init__(self, number,data):
