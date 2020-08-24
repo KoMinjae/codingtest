@@ -14,3 +14,15 @@ def solution(n, times):
             left = mid+1
     return answer
 solution(6,[7,10])
+
+"""SWEA
+def main():
+    T = int(input())
+    for test_case in range(1, T+1):
+        N, M = map(int,input().split())
+        times=list()
+        for i in range(N):
+            times.append(int(input()))
+        print('#{} {}'.format(test_case, solution(M,times)))
+main()
+"""
