@@ -1,32 +1,26 @@
+#시간초과뜸
 def solution(products,L):
     stack=list()
     maxfla=0
     numlist = [i for i in range(len(products))]
-    visit=list()
     maxcal=0
-    for i in range(len(products)):
-        stack.append(([i],products[i][0], products[i][1]))
-        visit.append([i])
+    idx = 0
+    stack.append(([],0,0,idx))
+
     while stack:
-        menulist , flavor, cal = stack.pop()
-        menulist.sort()
+        menulist , flavor, cal, idx = stack.pop()
         if cal > L:
             continue
-        else:
-            if cal > maxcal:
-                if maxfla > flavor:
-                    continue
-            if maxfla <= flavor :
-                maxfla = flavor
-                maxcal = cal
-            for i in numlist:
-                if i not in menulist:
-                    newmenu = menulist+[i]
-                    newmenu.sort()
-                    if newmenu not in visit:
-                        if cal + products[i][1] <= L :
-                            stack.append((menulist+[i] , flavor + products[i][0], cal + products[i][1]))
-                            visit.append(newmenu)
+        if maxfla <= flavor :
+            maxfla = flavor
+        if idx >= len(products):
+                continue
+        for i in range(2):
+            if i == 0:
+                if cal+products[idx][1]<=L:
+                    stack.append((menulist+[idx],flavor+products[idx][0],cal+products[idx][1],idx+1))
+            elif i == 1:
+                stack.append((menulist,flavor,cal,idx+1))
     return maxfla
 def main():
     T=int(input())
@@ -40,5 +34,5 @@ def main():
             print("#{} {}".format(test_case, 0))
         else:
             print("#{} {}".format(test_case, solution(products,L)))
-        
+
 main()
