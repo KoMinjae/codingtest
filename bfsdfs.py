@@ -1,11 +1,4 @@
-graph = {'A': set(['B', 'C']),
-         'B': set(['A', 'D', 'E']),
-         'C': set(['A', 'F']),
-         'D': set(['B']),
-         'E': set(['B', 'F']),
-         'F': set(['C', 'E'])}
-
-def bfs_paths(graph, start, goal):
+def bfs_paths(graph, start):
     queue = [(start, [start])]
     result = []
 
@@ -17,5 +10,23 @@ def bfs_paths(graph, start, goal):
             for m in graph[n] - set(path):
                 queue.append((m, path + [m]))
     return result
+def dfs_paths(graph, start):
+    queue = [(start, [start])]
+    result = []
 
-print(bfs_paths(graph, 'A', 'F'))
+    while queue:
+        n, path = queue.pop()
+        if n == goal:
+            result.append(path)
+        else:
+            for m in graph[n] - set(path):
+                queue.append((m, path + [m]))
+    return result
+def main():
+    graph={}
+    N, M, V = map(int,input().split())
+    for i in range(N):
+        graph.setdefault(i,[])
+    for i in range(M):
+        graph[i[0]].append(i[1])
+    print(bfs_paths(graph,V),"\n",dfs_paths(graph,V))
