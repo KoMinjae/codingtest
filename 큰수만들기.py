@@ -13,4 +13,4 @@ def solution(number, k):
     answer = ''.join(collect)
     return answer
 
-solution("1231234",3)
+print(solution("1231234",3))
